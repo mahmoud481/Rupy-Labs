@@ -1,4 +1,10 @@
 <div  class="w-50 my-3 mx-auto pt-5" >
+<h1>New article</h1>
+ 
+<%= render 'form' %>
+ 
+<%= link_to 'Back', articles_path %>
+
     <h2 class="text-primary mt-5">  New Article </h2>
     <%= form_with scope: :article, url: articles_path, local: true do |form| %>
     <p class="form-group">
@@ -15,4 +21,5 @@
         <%= form.submit   class: "btn btn-primary"%>
     </p>
     <% end %>
+    <%= link_to 'Back', articles_path %>
 </div>
