@@ -4,10 +4,15 @@ class ArticlesController < ApplicationController
     end
 
     #create New Article
-    
+    def api_show
+        @article = Article.find(params[:id])
+        render json:@article
+    end
+
     def create
         @article = Article.new(article_params)
-    
+        # current_user.articles.create(article_params)
+        # Article.new(user_id:current_user.id,title:params)
         if @article.save
         redirect_to @article
         else
@@ -19,9 +24,9 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     
         if @article.update(article_params)
-        redirect_to @article
+         redirect_to @article
         else
-        render 'edit'
+         render 'edit'
         end
     end
     # Edit 
@@ -29,12 +34,14 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
     # Get All Articles
+    before_action :authenticate_user!
     def index
         @articles = Article.all
     end
     # Get One Article 
     def show
         @article = Article.find(params[:id])
+        render json:@article
     end
 
     # Destroy

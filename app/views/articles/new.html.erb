@@ -5,21 +5,4 @@
  
 <%= link_to 'Back', articles_path %>
 
-    <h2 class="text-primary mt-5">  New Article </h2>
-    <%= form_with scope: :article, url: articles_path, local: true do |form| %>
-    <p class="form-group">
-        <%= form.label :title %><br>
-        <%= form.text_field :title, class: "form-control" %>
-    </p>
-    
-    <p>
-        <%= form.label :text %><br>
-        <%= form.text_area :text, class: "form-control"  %>
-    </p>
-    
-    <p>
-        <%= form.submit   class: "btn btn-primary"%>
-    </p>
-    <% end %>
-    <%= link_to 'Back', articles_path %>
 </div>
